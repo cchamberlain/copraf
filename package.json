@@ -1,0 +1,23 @@
+{
+  "name": "copraf",
+  "version": "0.1.0",
+  "description": "Like rimraf, but for 'cp -rf'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchamberlain/copraf.git"
+  },
+  "keywords": [
+    "copy",
+    "rimraf"
+  ],
+  "author": "Cole Chamberlain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cchamberlain/copraf/issues"
+  },
+  "homepage": "https://github.com/cchamberlain/copraf#readme"
+}
