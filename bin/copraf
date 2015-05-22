@@ -1,0 +1,50 @@
+#!/bin/bash
+
+### This application will simply do a cp -rf on unix based systems and will do special stuff to get around 260+ character paths on Windows
+
+if [ -z "$1" ] ; then
+    echo "copraf: missing file arguments"
+    echo "Try \`copraf --help\` for more information."
+fi
+
+if [ -z "$2" ] ; then
+    echo "copraf: missing destination file"
+    echo "Try \`copraf --help\` for more information."
+fi
+
+cp_rf() {
+  echo "$(cp -rf "$@")"
+}
+
+unix_name=$(uname)
+shopt -s nocasematch
+case "$unix_name" in
+  *windows*|*ming*)
+    ;;
+  *)
+    echo cp_rf "$@"
+    exit 0
+    ;;
+esac
+
+get_abs_filename() {
+  # $1 : relative filename
+  dir_name="$(dirname "$1")"
+  mkdirp $dir_name
+
+  echo "$(cd "$dir_name" && pwd)/$(basename "$1")"
+}
+
+src=$(get_abs_filename "$1")
+src_is_file= [ -f "$src" ]
+
+
+#dest=
+$(get_abs_filename "$2")
+#echo "cp -rf $src $dest"
+
+
+echo ${#src}
+echo ${#dest}
+
+
